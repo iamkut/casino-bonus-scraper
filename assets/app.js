@@ -258,16 +258,26 @@ modalEl.addEventListener('click', e => {
 // Reflect restored view in the toggle buttons on first paint.
 viewBtns.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.view === currentView)));
 
-// Initial load: show whatever's in data.json.
+function showEmptyState() {
+  metaEl.classList.remove('loading');
+  metaEl.textContent = 'No data yet — click Scrape to fetch results.';
+  resultsEl.innerHTML = '';
+}
+
+// Initial load: show whatever's in data.json. Treat missing/empty as a neutral
+// first-run state, not an error — on ephemeral hosts data.json may not exist yet.
 fetch('data.json', { cache: 'no-cache' })
-  .then(r => {
-    if (!r.ok) throw new Error('No data yet — click Scrape to fetch results.');
-    return r.json();
+  .then(async r => {
+    if (!r.ok) return null;
+    const text = (await r.text()).trim();
+    if (!text) return null;
+    try { return JSON.parse(text); } catch { return null; }
   })
-  .then(setData)
-  .catch(err => {
-    metaEl.classList.remove('loading');
-    metaEl.textContent = '';
-    resultsEl.innerHTML = '';
-    showBanner('err', friendlyError(err.message));
-  });
+  .then(data => {
+    if (!data || !Array.isArray(data.casinos) || data.casinos.length === 0) {
+      showEmptyState();
+      return;
+    }
+    setData(data);
+  })
+  .catch(() => showEmptyState());
