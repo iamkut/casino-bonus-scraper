@@ -93,9 +93,22 @@ Pages picks up the new `data.json` on the next deploy (usually under a minute).
 
 > Never commit `.env` or paste your `OPENAI_API_KEY` into any file. `.gitignore` already excludes `.env`.
 
-### Node runtime (full UI with live scraping)
+### Render (full UI with live scraping)
 
-If you want the in-browser Scrape button to work, deploy to a host that runs Node 18+ (Fly, Render, Railway, a VPS). Set `OPENAI_API_KEY` in the host's environment and run `npm start`.
+To make the in-browser Scrape button work, deploy to Render — the repo includes a `render.yaml` blueprint, so there's no manual config:
+
+1. Sign in at [render.com](https://render.com) with GitHub.
+2. **New → Blueprint**, pick this repo. Render reads `render.yaml` and proposes a free web service named `casino-bonus-scraper`.
+3. During setup, Render prompts for the one unset env var — paste your `OPENAI_API_KEY` and apply.
+4. First deploy takes a couple of minutes; after that each `git push` auto-deploys.
+
+The service URL (e.g. `https://casino-bonus-scraper.onrender.com`) hosts both the UI and the `/api/scrape` endpoint, so the Scrape button works end-to-end.
+
+> The free plan sleeps after ~15 min of inactivity. The first request after idle takes ~30s to wake the service — subsequent requests are instant.
+
+### Other Node hosts
+
+The app is a plain Node 18+ server (`npm start`), so it also runs on Fly.io, Railway, a VPS, etc. Set `OPENAI_API_KEY` in the host's environment.
 
 ## Approach notes
 
