@@ -11,7 +11,11 @@ Pulls bonus data for online casinos from a public comparison page, uses an LLM t
 
 ## Setup
 
+Clone the repo and install dependencies from inside the project folder:
+
 ```bash
+git clone https://github.com/iamkut/casino-bonus-scraper.git
+cd casino-bonus-scraper
 npm install
 ```
 
