@@ -72,30 +72,9 @@ Content-Type: application/json
 
 ## Deployment
 
-### GitHub Pages (static)
+### Render (recommended)
 
-The repo is set up to deploy directly from `main` with no build step — GitHub Pages serves `index.html`, `assets/`, and `data.json` as-is.
-
-1. Push the repo to GitHub.
-2. In the repo on GitHub: **Settings → Pages → Build and deployment**. Source: **Deploy from a branch**. Branch: `main`, folder: `/ (root)`. Save.
-3. Wait ~1 minute. The site will be live at `https://<your-username>.github.io/<repo-name>/`.
-
-Because Pages is static-only, the **Scrape button won't work** — there's no `/api/scrape` endpoint to call. To refresh the data:
-
-```bash
-npm run scrape          # regenerates data.json locally (needs OPENAI_API_KEY)
-git add data.json
-git commit -m "refresh data"
-git push
-```
-
-Pages picks up the new `data.json` on the next deploy (usually under a minute).
-
-> Never commit `.env` or paste your `OPENAI_API_KEY` into any file. `.gitignore` already excludes `.env`.
-
-### Render (full UI with live scraping)
-
-To make the in-browser Scrape button work, deploy to Render — the repo includes a `render.yaml` blueprint, so there's no manual config:
+Deploy to Render for the full UI with a working Scrape button. The repo includes a `render.yaml` blueprint, so there's no manual config:
 
 1. Sign in at [render.com](https://render.com) with GitHub.
 2. **New → Blueprint**, pick this repo. Render reads `render.yaml` and proposes a free web service named `casino-bonus-scraper`.
@@ -105,6 +84,8 @@ To make the in-browser Scrape button work, deploy to Render — the repo include
 The service URL (e.g. `https://casino-bonus-scraper.onrender.com`) hosts both the UI and the `/api/scrape` endpoint, so the Scrape button works end-to-end.
 
 > The free plan sleeps after ~15 min of inactivity. The first request after idle takes ~30s to wake the service — subsequent requests are instant.
+
+> Never commit `.env` or paste your `OPENAI_API_KEY` into any file. `.gitignore` already excludes `.env`; set the key in Render's dashboard.
 
 ### Other Node hosts
 
