@@ -1,0 +1,21 @@
+{
+  "name": "casino-bonus-scraper",
+  "version": "1.0.0",
+  "description": "Scrapes 3 casino bonuses from a public source, parses them with an LLM, and renders them on a mobile-first page.",
+  "type": "module",
+  "scripts": {
+    "scrape": "node scraper.js",
+    "start": "node server.js",
+    "serve": "node server.js",
+    "test:blocks": "node test-blocks.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0",
+    "dotenv": "^18.0.8",
+    "openai": "^7.33.0",
+    "robots-parser": "^3.0.1"
+  }
+}

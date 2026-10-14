@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b0f17">
+
+  <title>Casino Bonuses — Latest Welcome Offers from Online Casinos</title>
+  <meta name="description" content="Browse the latest welcome bonuses from online casinos. Compare offers, wagering requirements and promo details, updated from a public source.">
+  <meta name="keywords" content="casino bonuses, welcome bonus, online casino offers, no deposit bonus, casino promotions, free spins">
+  <meta name="author" content="Casino Bonus Scraper">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+  <link rel="canonical" href="/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Casino Bonuses">
+  <meta property="og:title" content="Casino Bonuses — Latest Welcome Offers from Online Casinos">
+  <meta property="og:description" content="Browse the latest welcome bonuses from online casinos. Compare offers, wagering requirements and promo details.">
+  <meta property="og:url" content="/">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Casino Bonuses — Latest Welcome Offers">
+  <meta property="og:image:type" content="image/png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Casino Bonuses — Latest Welcome Offers from Online Casinos">
+  <meta name="twitter:description" content="Browse the latest welcome bonuses from online casinos. Compare offers and promo details.">
+  <meta name="twitter:image" content="/assets/og-image.png">
+  <meta name="twitter:image:alt" content="Casino Bonuses — Latest Welcome Offers">
+
+  <link rel="stylesheet" href="assets/styles.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Casino Bonuses",
+    "description": "Browse the latest welcome bonuses from online casinos. Compare offers, wagering requirements and promo details.",
+    "url": "/",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "/?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+</head>
+<body>
+  <div class="wrap">
+    <div class="header">
+      <h1>Casino Bonuses</h1>
+      <p class="meta" id="meta">Loading</p>
+    </div>
+
+    <form class="controls" id="scrape-form">
+      <div class="field">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+          <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+        </svg>
+        <input id="url" type="url" placeholder="URL to scrape (leave empty for default)" autocomplete="off">
+      </div>
+      <button class="btn" id="scrape-btn" type="submit">
+        <span class="spinner" aria-hidden="true"></span>
+        <span class="btn-label">Scrape</span>
+      </button>
+      <div class="field search">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"/>
+          <path d="m21 21-4.3-4.3"/>
+        </svg>
+        <input id="filter" type="search" placeholder="Filter results…" autocomplete="off">
+      </div>
+      <div class="view-toggle" role="group" aria-label="View mode">
+        <button type="button" class="view-btn" data-view="cards" aria-pressed="false">Cards</button>
+        <button type="button" class="view-btn" data-view="table" aria-pressed="true">Table</button>
+      </div>
+    </form>
+
+    <div id="banner" class="banner" hidden></div>
+
+    <div id="results">
+      <div class="cards">
+        <div class="skeleton"></div>
+        <div class="skeleton"></div>
+        <div class="skeleton"></div>
+      </div>
+    </div>
+  </div>
+
+  <dialog id="bonus-modal" class="modal" aria-labelledby="modal-title">
+    <div class="modal-head">
+      <h3 class="modal-title" id="modal-title">Bonus details</h3>
+      <button type="button" class="modal-close" aria-label="Close">×</button>
+    </div>
+    <p class="modal-body" id="modal-body"></p>
+  </dialog>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>
